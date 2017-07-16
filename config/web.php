@@ -45,10 +45,17 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
+                'admin' => 'admin/default/index',
                 '<action>'=>'site/<action>',
             ],
         ],
 
+
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+        ],
     ],
     'params' => $params,
 ];
