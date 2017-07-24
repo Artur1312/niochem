@@ -2,6 +2,8 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\ArticleTag;
+use app\models\Tag;
 use app\models\UploadImage;
 use Yii;
 use app\models\Article;
@@ -162,6 +164,30 @@ class ArticleController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    public function actionSetTags($id)
+    {
+        $article = $this->findModel($id);
+        $selectedTags = $article->getSelectedTags();
+        $tags = ArrayHelper::map(Tag::find()->all(), 'id', 'title');
+
+        if(Yii::$app->request->isPost)
+        {
+            $tags = Yii::$app->request->post('tags');
+            $article->saveTags($tags);
+
+            return $this->redirect(['view', 'id'=>$article->id]);
+        }
+
+
+        return $this->render('tags', [
+            'selectedTags' => $selectedTags,
+            'tags' => $tags,
+        ]);
+
+    }
+
+
 
     /**
      * Finds the Article model based on its primary key value.
