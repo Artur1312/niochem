@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Article;
+use app\models\ArticleTag;
 use app\models\Category;
 use Yii;
 use yii\data\Pagination;
@@ -79,14 +80,39 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionSingle()
+    public function actionPost($id)
     {
-        return $this->render('single');
+        $article = Article::findOne($id);
+        $tags = ArticleTag::find()->all();
+        $popular = Article::getPopularPosts();
+        $recent = Article::getRecentPosts();
+        $categories = Category::getAll();
+
+        return $this->render('single',
+            [
+                'article' => $article,
+                'tags' => $tags,
+                'popular' => $popular,
+                'recent' => $recent,
+                'categories' => $categories
+            ]);
     }
 
-    public function actionCategory()
+    public function actionCategory($id)
     {
-        return $this->render('category');
+        $data = Category::getArticlesByCategory($id);
+        $popular = Article::getPopularPosts();
+        $recent = Article::getRecentPosts();
+        $categories = Category::getAll();
+
+        return $this->render('category',
+            [
+                'articles'=>$data['articles'],
+                'pagination'=>$data['pagination'],
+                'popular' => $popular,
+                'recent' => $recent,
+                'categories' => $categories
+            ]);
     }
 
 
