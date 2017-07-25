@@ -64,6 +64,17 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionSingle()
+    {
+        return $this->render('single');
+    }
+
+    public function actionCategory()
+    {
+        return $this->render('category');
+    }
+
+
     /**
      * Login action.
      *
@@ -113,6 +124,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
 
     /**
      * Displays about page.
