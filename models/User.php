@@ -34,7 +34,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['isAdmin'], 'integer'],
-            [['name', 'email', 'password', 'photo'], 'string', 'max' => 255],
+            [['username', 'email', 'password', 'photo'], 'string', 'max' => 255],
         ];
     }
 
@@ -45,7 +45,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'username' => 'Name',
             'email' => 'Email',
             'password' => 'Password',
             'isAdmin' => 'Is Admin',
@@ -93,12 +93,35 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public static function findByUsername($username)
     {
-        return User::find()->where(['name'=>$username])->one();
+        return User::find()->where(['username'=>$username])->one();
     }
 
-    public function ValidatePassword($password)
+    public static function findByEmail($email)
     {
-        return ($this->password == $password) ? true : false;
+        return User::find()->where(['email'=>$email])->one();
+    }
+
+//    public function ValidatePassword($password)
+//    {
+//        return ($this->password == $password) ? true : false;
+//    }
+
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password);
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = Yii::$app->security->generatePasswordHash($password);
+    }
+
+
+//save-create method for signup form, where your data save to database.
+
+    public function create()
+    {
+        return $this->save(false);
     }
 
 }

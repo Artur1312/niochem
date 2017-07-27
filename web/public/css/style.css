@@ -1254,16 +1254,19 @@ blog css
 
 .leave-comment input, .leave-comment textarea {
     background-color: #FAFAFA;
-    color: #999999;
+    color: #000000;
     border-radius: 0;
     font-size: 14px;
     line-height: 28px;
-    padding: 20px;
+    /*padding: 10px;*/
     border-color: #eee;
     -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, .075);
     box-shadow: inset 0 0 0 rgba(0, 0, 0, .075);
 
 }
+
+
+
 
 .leave-comment input[type="text"] + input[type="email"] {
     border: 1px solid #eeeeee;
