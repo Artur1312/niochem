@@ -11,9 +11,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="post-thumb">
-                                <a href="<?= Url::toRoute(['site/post', 'id'=>$article->id]);?>"><img src="<?=$article->getImage(); ?>" alt="" class="pull-left"></a>
+                                <a href="<?= Url::toRoute(['post/view', 'id'=>$article->id]);?>"><img src="<?=$article->getImage(); ?>" alt="" class="pull-left"></a>
 
-                                <a href="<?= Url::toRoute(['site/post', 'id'=>$article->id]);?>" class="post-thumb-overlay text-center">
+                                <a href="<?= Url::toRoute(['post/view', 'id'=>$article->id]);?>" class="post-thumb-overlay text-center">
                                     <div class="text-uppercase text-center">View Post</div>
                                 </a>
                             </div>

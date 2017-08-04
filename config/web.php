@@ -1,5 +1,7 @@
 <?php
 
+//use yii\web\UrlNormalizer;
+
 $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
 
@@ -44,11 +46,27 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-                '' => 'site/index',
-                'admin' => 'admin/default/index',
-                '<action>'=>'site/<action>',
+            'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+
             ],
+            'rules' => [
+//                '' => 'site/index',
+//                '<alias:\w+>' => 'site/<alias>',
+//                '<alias:view>' => 'post/<alias>',
+//                '<action>' => 'post/<action>',
+//                 '<action:\w+>'=>'site/<action>',
+//                  'admin' => 'admin/default/index',
+                '<alias:index|about|contact|category>' => 'site/<alias>',
+                '<alias:login>' => 'auth/<alias>',
+                '<alias:view>' => 'post/<alias>',
+                '<alias:signup>' => 'register/<alias>',
+//                'posts' => 'post/index',
+//                'post/<id:\d+>' => 'post/view',
+
+
+            ],
+
         ],
 
 

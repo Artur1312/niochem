@@ -65,7 +65,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $data = Article::getAll(1);
+        $data = Article::getAll(); //amount of articles
         $popular = Article::getPopularPosts();
         $recent = Article::getRecentPosts();
         $categories = Category::getAll();
@@ -78,24 +78,6 @@ class SiteController extends Controller
                 'recent' => $recent,
                 'categories' => $categories
         ]);
-    }
-
-    public function actionPost($id)
-    {
-        $article = Article::findOne($id);
-        $tags = ArticleTag::find()->all();
-        $popular = Article::getPopularPosts();
-        $recent = Article::getRecentPosts();
-        $categories = Category::getAll();
-
-        return $this->render('single',
-            [
-                'article' => $article,
-                'tags' => $tags,
-                'popular' => $popular,
-                'recent' => $recent,
-                'categories' => $categories
-            ]);
     }
 
     public function actionCategory($id)

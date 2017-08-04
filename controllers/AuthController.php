@@ -43,6 +43,16 @@ class AuthController extends Controller
         return $this->goHome();
     }
 
+    public function actionLoginVk($uid, $first_name, $photo)
+    {
+        $user = new User();
+
+       if($user->saveFromVK($uid, $first_name, $photo))
+       {
+           return $this->goHome();
+       }
+    }
+
 //    public function actionValid()
 //    {
 //        $user = User::findOne(1);

@@ -26,7 +26,7 @@ class SignupController extends Controller
                 return $this->redirect(['auth/login']);
             }
         }
-        return $this->render('index', [
+        return $this->render('register', [
         'model' => $model
         ]);
     }

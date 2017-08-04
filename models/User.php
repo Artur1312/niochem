@@ -116,6 +116,26 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         $this->password = Yii::$app->security->generatePasswordHash($password);
     }
 
+    /**
+     * @return int
+     */
+    public function saveFromVK($uid, $first_name, $photo)
+    {
+        $user = User::findOne($uid);
+
+        if($user) {
+            return Yii::$app->user->login($user);
+        }
+
+
+        $this->id = $uid;
+        $this->username = $first_name;
+        $this->photo = $photo;
+        $this->create();
+
+        return Yii::$app->user->login($this);
+    }
+
 
 //save-create method for signup form, where your data save to database.
 

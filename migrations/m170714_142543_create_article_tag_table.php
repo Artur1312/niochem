@@ -13,7 +13,7 @@ class m170714_142543_create_article_tag_table extends Migration
     public function up()
     {
         $this->createTable('article_tag', [
-            'id' => $this->primaryKey(),
+            'id' => 'pk',
             'article_id'=>$this->integer(),
             'tag_id'=>$this->integer()
         ]);

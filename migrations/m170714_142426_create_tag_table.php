@@ -13,8 +13,8 @@ class m170714_142426_create_tag_table extends Migration
     public function up()
     {
         $this->createTable('tag', [
-            'id' => $this->primaryKey(),
-            'title'=> $this->string(),
+            'id' => 'pk',
+            'title'=> $this->string()->unique(),
         ]);
     }
 

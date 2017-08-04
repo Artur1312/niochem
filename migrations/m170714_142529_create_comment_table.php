@@ -13,7 +13,7 @@ class m170714_142529_create_comment_table extends Migration
     public function up()
     {
         $this->createTable('comment', [
-            'id' => $this->primaryKey(),
+            'id' => 'pk',
             'text' =>$this->string(),
             'user_id'=>$this->integer(),
             'article_id'=>$this->integer(),
