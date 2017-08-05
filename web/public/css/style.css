@@ -70,6 +70,7 @@ ul {
     margin: 0;
 }
 
+
 .media .media-left{
     float: left;
 }
@@ -508,7 +509,7 @@ about me
 }
 
 .about-me-widget {
-    background: url(assets/images/me-cover.jpg) no-repeat;
+    background: url(/web/public/images/me-cover.jpg) no-repeat;
     background-size: 100%;
     background-color: #fff;
 }
@@ -538,6 +539,8 @@ about me
     padding: 10px 0 0;
     margin-bottom: 0;
 }
+
+
 
 /*=============
 subscribe newsletter
@@ -1206,7 +1209,10 @@ blog css
 .bottom-comment .comment-img {
     padding: 10px 15px 100px;
     float: left;
+    width: 70px;
+    height: 70px;
 }
+
 
 .bottom-comment h5 {
     font-size: 12px;
@@ -1311,7 +1317,7 @@ input[type="text"]:focus, input[type="email"]:focus, textarea {
 }
 
 .coming-soon {
-    background: url(assets/images/coming-soon.jpg) no-repeat;
+    background: url(/web/public/images/coming-soon.jpg) no-repeat;
     background-size: cover;
     position: relative;
     height: 100%;
@@ -1566,7 +1572,7 @@ header one
 header two
 ==========*/
 .header-bg {
-    background: url(assets/images/header-3-bg.jpg) no-repeat scroll 0 0;
+    background: url(/web/public/images/header-3-bg.jpg) no-repeat scroll 0 0;
     background-size: cover;
 }
 

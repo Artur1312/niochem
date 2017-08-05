@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Article;
 use app\models\ArticleTag;
 use app\models\Category;
+use app\models\CommentForm;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -76,7 +77,8 @@ class SiteController extends Controller
                 'pagination' => $data['pagination'],
                 'popular' => $popular,
                 'recent' => $recent,
-                'categories' => $categories
+                'categories' => $categories,
+
         ]);
     }
 
@@ -132,4 +134,6 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+
 }

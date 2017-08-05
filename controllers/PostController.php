@@ -12,6 +12,8 @@ namespace app\controllers;
 use app\models\Article;
 use app\models\ArticleTag;
 use app\models\Category;
+use app\models\CommentForm;
+use Yii;
 use yii\web\Controller;
 
 class PostController extends Controller
@@ -24,6 +26,9 @@ class PostController extends Controller
         $recent = Article::getRecentPosts();
         $categories = Category::getAll();
         $article->updateCounters(['viewed' => 1]);
+        $comments = $article->getArticleComments();
+
+        $commentForm = new CommentForm;
 
         return $this->render('single',
             [
@@ -31,11 +36,26 @@ class PostController extends Controller
                 'tags' => $tags,
                 'popular' => $popular,
                 'recent' => $recent,
-                'categories' => $categories
-
-
+                'categories' => $categories,
+                'comments' => $comments,
+                'commentForm' => $commentForm
             ]);
     }
+    public function actionComment($id)
+    {
+        $model = new CommentForm();
 
+        if(Yii::$app->request->isPost)
+        {
+            $model->load(Yii::$app->request->post());
+
+            if($model->saveComment($id))
+            {
+                Yii::$app->getSession()->setFlash('comment', 'Your comment will be published soon!');
+                return $this->redirect(['post/view', 'id'=>$id]);
+//                return var_dump($model);
+            }
+        }
+    }
 
 }

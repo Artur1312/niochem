@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `article_tag`.
  */
-class m170714_142543_create_article_tag_table extends Migration
+class m170714_142427_create_article_tag_table extends Migration
 {
     /**
      * @inheritdoc
