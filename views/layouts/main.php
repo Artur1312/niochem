@@ -90,7 +90,7 @@ PublicAsset::register($this);
 
                         <p> Phone: +123 456 78900</p>
 
-                        <p>mytreasure.com</p>
+                        <p>niochem.com</p>
                     </div>
                 </aside>
             </div>
