@@ -145,6 +145,7 @@ header
 .main-menu .navbar-nav li a:active,
 .main-menu .navbar-nav > li a:focus {
     color: #00BFF3;
+    /*text-decoration: none;*/
 }
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
     color: #00BFF3;
@@ -198,6 +199,7 @@ header
 .main-menu ul ul a:hover, .main-menu ul ul ul li a:hover{
     background: #00BFF3;
     color: #fff !important;
+
 }
 
 .main-menu ul li:hover > ul, .main-menu ul ul li:hover > ul {
@@ -338,9 +340,11 @@ a.more-link {
 }
 
 a.more-link:hover {
+    text-decoration: none;
     background: #00BFF3;
     color: #fff;
     border-color: #00BFF3;
+
 }
 
 .post {

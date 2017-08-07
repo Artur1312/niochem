@@ -40,14 +40,21 @@ class ArticleController extends Controller
      * Lists all Article models.
      * @return mixed
      */
+//    public function actionIndex()
+//    {
+//        $searchModel = new ArticleSearch();
+//        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+//
+//        return $this->render('index', [
+//            'searchModel' => $searchModel,
+//            'dataProvider' => $dataProvider,
+//        ]);
+//    }
     public function actionIndex()
     {
-        $searchModel = new ArticleSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $articles = Article::find()->orderBy('id asc')->all();
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'articles'=>$articles,
         ]);
     }
 
@@ -160,7 +167,7 @@ class ArticleController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($id)->remove();
 
         return $this->redirect(['index']);
     }
@@ -202,6 +209,27 @@ class ArticleController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    public function actionAllow($id)
+    {
+        $comment = Article::findOne($id);
+
+        if($comment->allow())
+        {
+            return $this->redirect(['article/index']);
+        }
+    }
+
+
+    public function actionDisallow($id)
+    {
+        $comment = Article::findOne($id);
+
+        if($comment->disallow())
+        {
+            return $this->redirect(['article/index']);
         }
     }
 }

@@ -18,14 +18,16 @@ class PublicAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'public/css/style.css',
+
+        'public/css/bootstrap.min.css',
         'public/css/font-awesome.min.css',
         'public/css/animate.min.css',
         'public/css/owl.carousel.css',
         'public/css/owl.theme.css',
         'public/css/owl.transitions.css',
         'public/css/responsive.css',
-        'public/css/bootstrap.min.css'
+        'public/css/style.css',
+
 
     ];
     public $js = [

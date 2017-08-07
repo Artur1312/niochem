@@ -5,6 +5,8 @@ namespace app\models;
 use Yii;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
+use \yii\db\ActiveRecord;
+
 
 /**
  * This is the model class for table "article".
@@ -18,12 +20,17 @@ use yii\helpers\ArrayHelper;
  * @property integer $user_id
  * @property integer $status
  * @property integer $category_id
- *
+ * @property integer $isRemoved
  * @property ArticleTag[] $articleTags
  * @property Comment[] $comments
  */
-class Article extends \yii\db\ActiveRecord
+class Article extends ActiveRecord
 {
+
+    const STATUS_ALLOW = 'Allow';
+    const STATUS_DISALLOW = 'Disallow';
+    const REMOVE = 2;
+
     /**
      * @inheritdoc
      */
@@ -218,4 +225,33 @@ class Article extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id'=>'user_id']);
     }
+
+    public function isAllowed()
+    {
+        return $this->status;
+    }
+
+    public function allow()
+    {
+        $this->status = self::STATUS_ALLOW;
+        return $this->save(false);
+    }
+
+    public function disallow()
+    {
+        $this->status = self::STATUS_DISALLOW;
+        return $this->save(false);
+    }
+
+    public function isRemoved()
+    {
+        return $this->isRemoved;
+    }
+
+    public function remove()
+    {
+        $this->isRemoved = self::REMOVE;
+        return $this->save(false);
+    }
+
 }
