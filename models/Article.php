@@ -27,9 +27,9 @@ use \yii\db\ActiveRecord;
 class Article extends ActiveRecord
 {
 
-    const STATUS_ALLOW = 'Allow';
-    const STATUS_DISALLOW = 'Disallow';
-    const REMOVE = 2;
+    const STATUS_ALLOW = 'allw';
+    const STATUS_DISALLOW = 'dsal';
+    const REMOVE = 0;
 
     /**
      * @inheritdoc

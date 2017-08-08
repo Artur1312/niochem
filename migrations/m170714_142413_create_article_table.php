@@ -1,7 +1,7 @@
 <?php
 
 use yii\db\Migration;
-
+use app\models\Article;
 /**
  * Handles the creation of table `article`.
  */
@@ -21,9 +21,9 @@ class m170714_142413_create_article_table extends Migration
             'image'=>$this->string(),
             'viewed'=>$this->integer()->defaultValue(0),
             'user_id'=>$this->integer(),
-            'status'=>"ENUM('Disallow','Allow') NOT NULL DEFAULT 'Disallow'",
+            'status'=>$this->char(4)->defaultValue(Article::STATUS_DISALLOW),
             'category_id'=>$this->integer(),
-            'isRemoved'=>"TINYINT (1) default 0",
+            'isRemoved'=>"TINYINT (1) default 1",
         ]);
     }
 

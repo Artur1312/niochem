@@ -16,7 +16,7 @@ $this->title = 'Niochem';
             <div class="col-md-8">
                 <?php foreach($articles as $article): ?>
 
-                <?php if(!$article->isRemoved() && $article->isAllowed()): ?>
+                <?php if($article->isRemoved() && $article->isAllowed() == Article::STATUS_ALLOW): ?>
                 <article class="post">
                     <div class="post-thumb">
                         <a href="<?= Url::toRoute(['post/view', 'id'=>$article->id]);?>"><img src="<?=$article->getImage(); ?>" alt=""></a>

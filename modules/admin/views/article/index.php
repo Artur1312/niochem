@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
+use app\models\Article;
 
 $this->title = 'Articles';
 $this->params['breadcrumbs'][] = $this->title;
@@ -36,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </thead>
         <tbody>
         <?php foreach($articles as $article):?>
-            <?php if(!$article->isRemoved()):?>
+            <?php if($article->isRemoved()):?>
             <tr>
                 <td><?= $article->id?></td>
                 <td><?= $article->title?></td>
@@ -46,10 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $article->author->username ?></td>
                 <td><img width="150px" src="<?= $article->getImage(); ?>"></td>
                 <td>
-                    <?php if($article->isAllowed()):?>
-                        <a class="btn btn-warning" href="<?= Url::toRoute(['article/disallow','id'=>$article->id]);?>">Disallow</a>
-                    <?php else:?>
+                    <?php if($article->isAllowed() == Article::STATUS_DISALLOW):?>
                         <a class="btn btn-success" href="<?= Url::toRoute(['article/allow','id'=>$article->id]);?>">Allow</a>
+                    <?php else:?>
+                        <a class="btn btn-warning" href="<?= Url::toRoute(['article/disallow','id'=>$article->id]);?>">Disallow</a>
                     <?php endif;?>
                 </td>
                 <td>

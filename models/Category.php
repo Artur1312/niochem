@@ -47,7 +47,10 @@ class Category extends \yii\db\ActiveRecord
     }
     public function getArticlesCount()
     {
-        return $this->getArticles()->count();
+        return $this->getArticles()->where([
+            'status'=>Article::STATUS_ALLOW,
+            'isRemoved'=>1,
+        ])->count();
     }
     public static function getAll()
     {

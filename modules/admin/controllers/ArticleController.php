@@ -214,9 +214,9 @@ class ArticleController extends Controller
 
     public function actionAllow($id)
     {
-        $comment = Article::findOne($id);
+        $article = Article::findOne($id);
 
-        if($comment->allow())
+        if($article->allow())
         {
             return $this->redirect(['article/index']);
         }
@@ -225,9 +225,9 @@ class ArticleController extends Controller
 
     public function actionDisallow($id)
     {
-        $comment = Article::findOne($id);
+        $article = Article::findOne($id);
 
-        if($comment->disallow())
+        if($article->disallow())
         {
             return $this->redirect(['article/index']);
         }

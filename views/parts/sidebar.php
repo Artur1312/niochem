@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Article;
 use yii\helpers\Url;
 
 ?>
@@ -10,7 +11,7 @@ use yii\helpers\Url;
         <aside class="widget">
             <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
             <?php foreach($popular as $article): ?>
-                <?php if(!$article->isRemoved() && $article->isAllowed()): ?>
+                <?php if($article->isRemoved() && $article->isAllowed() == Article::STATUS_ALLOW): ?>
                 <div class="popular-post">
                     <a href="<?= Url::toRoute(['post/view', 'id'=>$article->id]);?>" class="popular-img"><img src="<?=$article->getImage(); ?>" alt="">
                         <div class="p-overlay"></div>
@@ -26,7 +27,7 @@ use yii\helpers\Url;
         <aside class="widget pos-padding">
             <h3 class="widget-title text-uppercase text-center">Recent Posts</h3>
             <?php foreach($recent as $article): ?>
-                <?php if(!$article->isRemoved() && $article->isAllowed()): ?>
+                <?php if($article->isRemoved() && $article->isAllowed() == Article::STATUS_ALLOW): ?>
                 <div class="thumb-latest-posts">
 
                         <div class="media-left">
