@@ -163,7 +163,7 @@ class Article extends ActiveRecord
         return Yii::$app->formatter->asDate($this->date);
     }
 
-    public static function getAll($pageSize = 5)
+    public static function getAll($pageSize = 5) //you can also fix it in some cases (for example, in SiteController|actionIndex (getAll(your amount)))
     {
         // build a DB query to get all articles
         $query = Article::find();

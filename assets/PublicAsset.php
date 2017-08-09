@@ -26,7 +26,8 @@ class PublicAsset extends AssetBundle
         'public/css/owl.theme.css',
         'public/css/owl.transitions.css',
         'public/css/responsive.css',
-        'public/css/style.css',
+//        'public/css/style.css',
+        'public/css/stylish.css',
 
 
     ];
