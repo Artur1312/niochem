@@ -4,10 +4,10 @@
 <?php
 
 if(!empty($comments)):?>
-
+    <h4>3 comments</h4>
     <?php foreach($comments as $comment):?>
         <div class="bottom-comment"><!--bottom comment-->
-            <h4>3 comments</h4>
+
 
             <div class="comment-img">
                 <img width="70px" class="img-circle" src="<?=$comment->user->image; ?>" alt="">
@@ -31,7 +31,7 @@ if(!empty($comments)):?>
 <?php endif;?>
 <?php if(!Yii::$app->user->isGuest):?>
     <div class="leave-comment"><!--leave comment-->
-        <h4>Leave a reply</h4>
+
         <?php if(Yii::$app->session->getFlash('comment')): ?>
             <div class="alert alert-success" role="alert">
                 <?= Yii::$app->session->getFlash('comment'); ?>
@@ -42,11 +42,13 @@ if(!empty($comments)):?>
             'options'=>['class'=>'form-horizontal contact-form', 'role'=>'form']
         ])?>
         <div class="form-group">
+            <h4>Leave a comment: </h4>
             <div class="col-md-12">
                 <?= $form->field($commentForm, 'comment')->textarea(['class'=>'form-control','placeholder'=>'Write Message', 'rows'=>'6'])->label(false) ?>
             </div>
+            <button type="submit" class="btn send-btn">Post Comment</button>
         </div>
-        <button type="submit" class="btn send-btn">Post Comment</button>
+
         <?php ActiveForm::end(); ?>
     </div><!--end leave comment-->
 <?php endif; ?>
